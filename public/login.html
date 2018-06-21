@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>login</title>
+</head>
+<body>
+    <p>账号: <input type="text" placeholder="账号/手机/邮箱" id="account"></p>
+    <p>密码: <input type="password" id="password"></p>
+    <button id="login">登录</button>
+
+
+    <script src="https://cdn.bootcss.com/jquery/3.3.0/jquery.min.js"></script>
+    <script>
+        $('#login').click(function(){
+            let account = $('#account').val();
+            let password = $('#password').val();
+            $.ajax({
+                type:'post',
+                url:'/users?request=login',
+                data:{
+                    account,
+                    password
+                },
+                success(d){
+                    console.log(d)
+                }
+            })
+        })
+    </script>
+</body>
+</html>
